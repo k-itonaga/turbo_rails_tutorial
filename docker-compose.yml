@@ -1,0 +1,41 @@
+version: "1.0"
+
+services:
+  db:
+    image: postgres:15.2-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      PGTZ: Asia/Tokyo
+    ports:
+      - 5432:5432
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: sh
+    env_file:
+      - ./.env.dev
+    volumes:
+      - .:/app
+      - tmp:/app/tmp
+      - log:/app/log
+      - bundle:/usr/local/bundle
+    ports:
+      - 3000:3000
+    environment:
+      RAILS_DB_HOST: db
+      RAILS_DB_USER: postgres
+      RAILS_DB_PASSWORD: password
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+
+volumes:
+  pg_data:
+  tmp:
+  log:
+  bundle:
