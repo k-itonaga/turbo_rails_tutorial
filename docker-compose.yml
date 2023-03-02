@@ -15,7 +15,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: sh
+    command: ash -c "bin/setup && bin/dev"
     env_file:
       - ./.env.dev
     volumes:
