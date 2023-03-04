@@ -18,13 +18,17 @@ RUN apk update && \
         postgresql-dev \
         tzdata \
         nodejs \
-        npm
+        npm \
+        yarn \
+        chromium-chromedriver
 COPY Gemfile ${ROOT}
 COPY Gemfile.lock ${ROOT}
 
 RUN bundle install
 
 COPY . ${ROOT}
+RUN yarn build
+
 # RUN bin/setup
 
 # CMD ["rails", "server", "-b", "0.0.0.0"]
