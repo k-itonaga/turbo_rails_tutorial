@@ -1,24 +1,14 @@
-# README
+# Try Turbo Rails Tutorial 
+[Turbo Rails Tutorial](https://www.hotrails.dev/turbo-rails)を試してみたく作成したリポジトリです。
+ゆくゆくは会社の勉強会などで使えたらと整備しています。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Requirement
+* docker-compose
+# Usage
+```bash
+git clone https://github.com/k-itonaga/turbo_rails_tutorial.git
+cd turbo_rails_tutorial
+docker-compose build
+docker-compose up -d
+```
+ブラウザでlocalhost:3000に接続すれば動作が確認できます。
